@@ -1,0 +1,29 @@
+name: Auto-release on push (→ @latest + site rebuild)
+
+# Every push to main publishes a real @latest PATCH release and dispatches a
+# rebuild of the dependent site (tds-tools). Use the manual Release button
+# (release.yml) for a minor/major bump. The @latest bump commit carries
+# [skip ci], so auto-pushing that commit does NOT re-trigger this workflow
+# (no publish loop). Pipeline body in _build.yml.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: release-publish
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  release:
+    uses: ./.github/workflows/_build.yml
+    with:
+      publish_tag: latest
+      bump: patch
+      rebuild_site: tds-tools-frontend
+    secrets: inherit

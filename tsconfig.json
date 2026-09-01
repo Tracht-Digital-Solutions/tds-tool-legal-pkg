@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+
+    // Explicit, because TypeScript's automatic "load every @types/* in
+    // node_modules" is sensitive to the shape of the installed tree. Under
+    // TypeScript 6 a FRESH install stopped resolving `node:fs` / `node:url`
+    // (TS2591) while an incrementally-updated local tree kept working — so the
+    // suite passed here and failed in CI on the same commit. Naming the global
+    // type packages makes it deterministic. React/JSX types are unaffected:
+    // they come through the react package, not a global @types entry.
+    "types": ["node"],
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+
+    // Not ours: tsup's d.ts step sets `baseUrl: compilerOptions.baseUrl || "."`
+    // unconditionally (tsup/dist/rollup.js), and TypeScript 6 errors on that
+    // deprecated option — the DTS build fails while tsc --noEmit passes. Drop
+    // it when tsup stops injecting baseUrl. The same code path is what blocks
+    // TypeScript 7 here, where it throws outright.
+    "ignoreDeprecations": "6.0",
+    "declaration": true,
+    "isolatedModules": true,
+
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

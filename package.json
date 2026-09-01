@@ -1,0 +1,61 @@
+{
+  "name": "@tracht-digital-solutions/tds-tool-legal",
+  "version": "0.1.0",
+  "description": "Recht & Pflichten für die TDS-Tools-Plattform: Muster-Generatoren für Impressum, Datenschutzerklärung und Barrierefreiheitserklärung sowie die Kennzeichnung KI-erzeugter Bilder. Vollständig clientseitig.",
+  "license": "UNLICENSED",
+  "private": false,
+  "type": "module",
+  "files": [
+    "dist",
+    "tools",
+    "islands",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./tools/*": "./tools/*",
+    "./islands/*": "./islands/*"
+  },
+  "scripts": {
+    "build": "tsup",
+    "type-check": "tsc --noEmit",
+    "lint:primitives": "node scripts/lint-primitives.mjs",
+    "clean": "rimraf dist",
+    "test": "vitest",
+    "test:run": "vitest run"
+  },
+  "peerDependencies": {
+    "@tracht-digital-solutions/tds-tools-contract": "^1.1.1",
+    "astro": ">=6",
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.6",
+    "@tracht-digital-solutions/tds-tools-contract": "^1.1.1",
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5",
+    "jsdom": "^30.0.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "rimraf": "^6.1.3",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.11"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tracht-Digital-Solutions/tds-tool-legal-pkg.git"
+  }
+}

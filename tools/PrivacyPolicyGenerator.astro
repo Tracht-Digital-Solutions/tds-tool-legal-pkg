@@ -1,0 +1,19 @@
+---
+// Datenschutzerklärung-Generator — Shell für die clientseitige Insel.
+//
+// `lang` reicht die Toolseite der Site durch; der Default steht bewusst HIER
+// und noch einmal in der Insel auf "de". Ein Aufrufer, der die Prop nicht
+// setzt, bekommt damit genau das Verhalten, das er vor dem englischen Baum
+// hatte.
+import PrivacyPolicyGenerator from "../islands/PrivacyPolicyGenerator.tsx";
+
+interface Props {
+  lang?: "de" | "en";
+}
+
+const { lang = "de" } = Astro.props;
+---
+
+<div class="tool tool--privacy">
+  <PrivacyPolicyGenerator client:load lang={lang} />
+</div>

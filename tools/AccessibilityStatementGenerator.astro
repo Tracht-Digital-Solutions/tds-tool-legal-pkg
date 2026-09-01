@@ -1,0 +1,19 @@
+---
+// Barrierefreiheitserklärung-Generator — Shell für die clientseitige Insel.
+//
+// `lang` reicht die Toolseite der Site durch; der Default steht bewusst HIER
+// und noch einmal in der Insel auf "de". Ein Aufrufer, der die Prop nicht
+// setzt, bekommt damit genau das Verhalten, das er vor dem englischen Baum
+// hatte.
+import AccessibilityStatementGenerator from "../islands/AccessibilityStatementGenerator.tsx";
+
+interface Props {
+  lang?: "de" | "en";
+}
+
+const { lang = "de" } = Astro.props;
+---
+
+<div class="tool tool--accessibility">
+  <AccessibilityStatementGenerator client:load lang={lang} />
+</div>

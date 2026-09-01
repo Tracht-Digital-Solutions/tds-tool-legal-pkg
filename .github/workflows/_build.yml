@@ -1,0 +1,118 @@
+name: Build (reusable)
+
+# Single source of truth for this tool package. Called by ci.yml (PR gate, no
+# publish), and by dev.yml (push → @latest patch) / release.yml (manual bump).
+# A @latest publish also dispatches a rebuild of the dependent site so it picks
+# up the new version. Behaviour selected via the inputs below.
+#
+# Tool packages are npm-only (no PHP half): a manifest (src/index.ts, compiled by
+# tsup) + raw .astro/.tsx consumed by the tds-tools site. type-check + build gate
+# every run; the islands/.astro are validated at the site build.
+
+on:
+  workflow_call:
+    inputs:
+      publish_tag:
+        description: "none = build only (CI); 'dev' = prerelease @dev; 'latest' = real release."
+        required: false
+        type: string
+        default: none
+      bump:
+        description: Version bump for a 'latest' release (patch | minor | major).
+        required: false
+        type: string
+        default: patch
+      rebuild_site:
+        description: Repo whose release.yml to dispatch after a @latest publish (site rebuild). Empty = none.
+        required: false
+        type: string
+        default: ''
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      NPM_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          token: ${{ secrets.PACKAGE_TOKEN }}
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@tracht-digital-solutions'
+
+      - name: Install
+        # NOT `npm ci` — Windows-only lockfile issue. Resolves fresh per-platform.
+        run: npm install --no-package-lock
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
+
+      - name: Type check
+        run: npm run type-check
+
+      - name: Lint primitives
+        # Tool packs ship no CSS of their own, so a control without the shared
+        # class is unstyled — and an unclassed <input> is INVISIBLE, because
+        # Tailwind preflight zeroes borders. All 12 buttons across the four
+        # packs had drifted bare, and the hand-rolled radii pinned the tools
+        # to the marketing geometry after the site moved to the panel surface.
+        run: npm run lint:primitives
+
+      - name: Test
+        # A regression test that gates nothing is decoration. This pack ships a
+        # full vitest suite that only ever ran on a developer machine, so a
+        # broken tool reached the site build green. It is a release gate now.
+        run: npm run test:run
+
+      - name: Build
+        run: npm run build
+
+      # --- Publish -----------------------------------------------------------
+      - name: Publish prerelease (@dev)
+        if: ${{ inputs.publish_tag == 'dev' }}
+        run: |
+          base=$(node -p "require('./package.json').version")
+          npm version "${base}-dev.${{ github.run_number }}" --no-git-tag-version
+          npm publish --tag dev
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
+
+      - name: Release (@latest) + push tag
+        # The bump commit carries [skip ci] so pushing it back to main does NOT
+        # re-trigger the auto-release workflow (no publish loop).
+        if: ${{ inputs.publish_tag == 'latest' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          new=$(npm version ${{ inputs.bump }} --no-git-tag-version)
+          git add package.json
+          git commit -m "release: ${new} [skip ci]"
+          git tag -a "${new}" -m "release ${new}"
+          npm publish
+          git push --follow-tags origin HEAD:main
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
+
+      - name: Dispatch site rebuild
+        # After a real release, kick the dependent site's deploy so it rebuilds
+        # against the new package version.
+        if: ${{ inputs.publish_tag == 'latest' && inputs.rebuild_site != '' }}
+        env:
+          GH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
+        run: gh workflow run release.yml -R Tracht-Digital-Solutions/${{ inputs.rebuild_site }}
+
+      - name: Prune old prerelease package versions (keep newest 5)
+        continue-on-error: true
+        if: ${{ inputs.publish_tag != 'none' }}
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: tds-tool-legal
+          package-type: npm
+          min-versions-to-keep: 5
+          delete-only-pre-release-versions: 'true'
+          token: ${{ secrets.PACKAGE_TOKEN }}

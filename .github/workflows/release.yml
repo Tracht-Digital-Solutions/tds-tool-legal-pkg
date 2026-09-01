@@ -1,0 +1,31 @@
+name: Release (manual → GitHub Packages @latest)
+
+# Manual button for a chosen bump (patch/minor/major). Pushes to main already
+# auto-release a PATCH via dev.yml; use this for a minor/major bump. Also
+# dispatches a rebuild of the dependent site. Pipeline body in _build.yml.
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Version bump
+        type: choice
+        options: [patch, minor, major]
+        default: patch
+
+concurrency:
+  group: release-publish
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  release:
+    uses: ./.github/workflows/_build.yml
+    with:
+      publish_tag: latest
+      bump: ${{ inputs.bump }}
+      rebuild_site: tds-tools-frontend
+    secrets: inherit
