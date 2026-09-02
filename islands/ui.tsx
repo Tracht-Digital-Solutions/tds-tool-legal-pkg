@@ -136,10 +136,19 @@ interface RadiosProps<T extends string> {
   onChange: (value: T) => void;
 }
 
+/**
+ * Eine Auswahl aus mehreren Möglichkeiten.
+ *
+ * Die Legende ist nur für Hilfsmittel sichtbar: beide Aufrufer setzen die
+ * Gruppe in ein `Group` mit derselben Überschrift, und zweimal derselbe Satz
+ * untereinander liest sich wie ein Fehler. Weglassen ist trotzdem keine
+ * Option — ein `fieldset` ohne Legende hat für einen Screenreader keinen
+ * Namen, und die Auswahl stünde dann ohne ihre Frage im Raum.
+ */
 export function Radios<T extends string>({ legend, name, value, options, onChange }: RadiosProps<T>) {
   return (
     <fieldset className="text-sm">
-      <legend className="mb-2 opacity-80">{legend}</legend>
+      <legend className="sr-only">{legend}</legend>
       <div className="grid gap-2">
         {options.map((option) => (
           <label key={option.value} className="flex items-start gap-2">

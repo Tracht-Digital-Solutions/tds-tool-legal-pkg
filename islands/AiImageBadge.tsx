@@ -59,6 +59,7 @@ interface Strings {
   building: string;
   download: string;
   downloadName: string;
+  preview: string;
   result: string;
   resultAlt: string;
   embedded: string;
@@ -101,6 +102,7 @@ const STRINGS = {
     building: "Erzeuge …",
     download: "Herunterladen",
     downloadName: "ki-gekennzeichnet",
+    preview: "Vorschau",
     result: "Ergebnis",
     resultAlt: "Gekennzeichnetes Bild",
     embedded: "Hinweis in der Datei eingebettet.",
@@ -141,6 +143,7 @@ const STRINGS = {
     building: "Producing …",
     download: "Download",
     downloadName: "ai-labelled",
+    preview: "Preview",
     result: "Result",
     resultAlt: "Labelled image",
     embedded: "Note embedded in the file.",
@@ -429,7 +432,7 @@ export default function AiImageBadge({ lang = "de" }: Props) {
           {embed && !canEmbed && <p className="text-xs opacity-70">{t.embedWebp}</p>}
 
           <div className="tds-card p-4">
-            <p className="mb-2 text-xs opacity-60">{t.result}</p>
+            <p className="mb-2 text-xs opacity-60">{t.preview}</p>
             <canvas ref={previewRef} className="h-auto max-w-full" />
           </div>
 
@@ -447,6 +450,7 @@ export default function AiImageBadge({ lang = "de" }: Props) {
 
       {result && (
         <div className="tds-card space-y-3 p-4">
+          <p className="text-xs opacity-60">{t.result}</p>
           <img src={result.url} alt={t.resultAlt} className="h-auto max-h-64 max-w-full" />
           <p className="text-sm opacity-80">{result.embedded ? t.embedded : t.notEmbedded}</p>
           {/* Ein Anker mit fertiger Object-URL lädt selbst herunter; der
