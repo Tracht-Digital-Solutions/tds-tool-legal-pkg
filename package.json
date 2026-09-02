@@ -1,6 +1,6 @@
 {
   "name": "@tracht-digital-solutions/tds-tool-legal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Recht & Pflichten für die TDS-Tools-Plattform: Muster-Generatoren für Impressum, Datenschutzerklärung und Barrierefreiheitserklärung sowie die Kennzeichnung KI-erzeugter Bilder. Vollständig clientseitig.",
   "license": "UNLICENSED",
   "private": false,
