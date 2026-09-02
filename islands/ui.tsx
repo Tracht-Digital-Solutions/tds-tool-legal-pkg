@@ -210,10 +210,19 @@ const NOTE = {
   },
 } satisfies Record<Lang, Notes>;
 
-/** Der Rechtshinweis. Steht über dem Formular und noch einmal unter der Ausgabe. */
+/**
+ * Der Rechtshinweis. Steht über dem Formular und noch einmal unter der Ausgabe.
+ *
+ * `.tds-alert` und nicht `.status-pill`: die Plakette ist ein kurzes
+ * Zustandsetikett mit `white-space: nowrap` und Versalien, gedacht für ein
+ * Wort. Ein ganzer Satz darin bricht nicht um, sondern schiebt das Dokument
+ * auseinander — auf einem 390 Pixel breiten Fenster auf über 1100 Pixel. Zu
+ * sehen ist davon nichts, weil `body { overflow-x: hidden }` den Überhang
+ * abschneidet; man merkt es erst, wenn man die Dokumentbreite misst.
+ */
 export function Disclaimer({ lang }: { lang: Lang }) {
   return (
-    <p className="status-pill status-pill--warning text-sm" role="note">
+    <p className="tds-alert tds-alert--warning" role="note">
       {NOTE[lang].disclaimer}
     </p>
   );

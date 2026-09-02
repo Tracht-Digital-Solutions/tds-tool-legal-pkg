@@ -104,9 +104,18 @@ Lauf: die sechs node-Suiten brauchen kein DOM.
 - **Dieses Pack liefert kein CSS.** Jedes Bedienelement trägt eine Klasse aus
   tds-shared: `field-boxed` an Eingabefeldern und Auswahllisten, `btn` plus
   Variante an Schaltflächen, `chip` an den Vorschlagsknöpfen, `tds-card` an
-  Ergebnisflächen, `status-pill` an Hinweisen. Ohne `field-boxed` rendert ein
+  Ergebnisflächen, `tds-alert` an Blockhinweisen. Ohne `field-boxed` rendert ein
   Eingabefeld **unsichtbar**, weil Tailwinds Preflight die Rahmen nullt.
   `npm run lint:primitives` läuft in CI.
+- **`status-pill` ist ein Etikett, keine Blockmeldung.** Die Plakette hat
+  `white-space: nowrap` und Versalien und ist für ein Wort gedacht. Ein ganzer
+  Satz darin bricht nicht um: auf einem 390 Pixel breiten Fenster schob der
+  Rechtshinweis das Dokument auf über 1100 Pixel. Sichtbar ist das nicht,
+  weil `body { overflow-x: hidden }` den Überhang abschneidet — man findet es
+  nur, indem man `document.documentElement.scrollWidth` misst. Für eine
+  Meldung über mehrere Zeilen ist `tds-alert` (mit `--success` / `--warning` /
+  `--danger`) die richtige Klasse; die Bibliothek sagt das im Kommentar über
+  `.status-pill` auch selbst.
 - **Nie einen Radius handschreiben.** Tailwind erzeugt aus einem Paket in
   `node_modules` keine Arbitrary Values; aus dieser Datei heraus wäre das keine
   Regel, sondern gar nichts. Immer die geteilte Klasse nehmen.

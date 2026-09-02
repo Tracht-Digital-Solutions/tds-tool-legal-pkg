@@ -440,7 +440,7 @@ export default function AiImageBadge({ lang = "de" }: Props) {
       )}
 
       {error && (
-        <p className="status-pill status-pill--danger text-sm" role="alert">
+        <p className="tds-alert tds-alert--danger" role="alert">
           {error}
         </p>
       )}
