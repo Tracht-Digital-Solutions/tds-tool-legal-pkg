@@ -46,6 +46,21 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@tracht-digital-solutions'
 
+      - name: Pin npm
+        # Node 22 ships npm 10, whose arborist crashes with
+        # "Cannot read properties of null (reading 'edgesOut')" on some
+        # dependency graphs. Astro 7.3.0 (2026-09-03) introduced one, and this
+        # package floats on `astro@>=6` — an unbounded floor, so a lockless
+        # install resolves straight into it.
+        #
+        # It bites here and not everywhere because `--no-package-lock` below
+        # re-resolves every range on every run: a publish by any dependency can
+        # change the graph between two builds of the SAME commit, so the failure
+        # arrives on a green commit that touched no manifest. That is the trade
+        # for a lockfile this repo cannot use; the cost is that the npm doing
+        # the resolving has to be current.
+        run: npm install -g npm@11
+
       - name: Install
         # NOT `npm ci` — Windows-only lockfile issue. Resolves fresh per-platform.
         run: npm install --no-package-lock
