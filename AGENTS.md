@@ -148,3 +148,10 @@ npm run build
 Ein Push auf `main` veröffentlicht automatisch einen Patch @latest und stößt
 einen Rebuild von `tds-tools-frontend` an; der manuelle Release-Knopf ist für
 Minor und Major.
+- **`tds-appear` belongs to `tds-shared`, not to this pack.** The class fades a
+  result into place the moment it is INSERTED — no script, no runtime, which is
+  the only kind of motion a public tool may carry. Two consequences: the CSS
+  arrives with the site's `tds-shared` (>=0.38.8), so the class does nothing in
+  a site pinned lower; and an element that merely changes its text does not
+  re-animate, so a permanent output box needs a `key` on the value to be
+  re-inserted.

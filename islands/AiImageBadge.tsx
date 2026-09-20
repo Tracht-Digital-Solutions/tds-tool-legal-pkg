@@ -443,13 +443,18 @@ export default function AiImageBadge({ lang = "de" }: Props) {
       )}
 
       {error && (
-        <p className="tds-alert tds-alert--danger" role="alert">
+        <p className="tds-alert tds-alert--danger tds-appear" role="alert">
           {error}
         </p>
       )}
 
       {result && (
-        <div className="tds-card space-y-3 p-4">
+        // tds-appear (tds-shared): the finished badge fades into place as the
+        // card is inserted. CSS only — a public tool ships no animation
+        // runtime. Deliberately NOT on the document preview of the other three
+        // generators: that one is in the tree from the start and would animate
+        // on page load, which is what cost this site its LCP once before.
+        <div className="tds-card tds-appear space-y-3 p-4">
           <p className="text-xs opacity-60">{t.result}</p>
           <img src={result.url} alt={t.resultAlt} className="h-auto max-h-64 max-w-full" />
           <p className="text-sm opacity-80">{result.embedded ? t.embedded : t.notEmbedded}</p>

@@ -108,7 +108,10 @@ jobs:
           git add package.json
           git commit -m "release: ${new} [skip ci]"
           git tag -a "${new}" -m "release ${new}"
-          npm publish
+          # --tag latest is named on purpose. Some of these packages carry a
+          # stray high version on the registry (26.7.0, published by accident),
+          # and npm refuses to move "latest" DOWN to a lower version implicitly.
+          npm publish --tag latest
           git push --follow-tags origin HEAD:main
         env:
           NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
