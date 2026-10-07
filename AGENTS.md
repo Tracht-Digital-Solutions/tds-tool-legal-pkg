@@ -21,7 +21,7 @@ npm run build                   # tsup
 
 ## Harte Regeln
 
-- **Jeder Push auf `main` veröffentlicht einen Patch `@latest`** und baut `tds-tools-frontend` neu.
+- **Jeder Push auf `main` veröffentlicht einen Patch `@latest`** und deployt `tds-tools-frontend` (stößt dessen `release.yml` an).
   Der manuelle Release-Knopf ist für Minor/Major. Reine Doku-Commits tragen `[skip ci]`.
 - Alle vier Werkzeuge sind frei: `premiumDefault`, `requiresLoginDefault`, `priceCentsDefault` fehlen absichtlich.
 - Der Muster-Hinweis steht in der Oberfläche, nie im erzeugten Text.
