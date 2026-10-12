@@ -175,7 +175,8 @@ export function Radios<T extends string>({ legend, name, value, options, onChang
 export function Group({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section className="space-y-3">
-      <h3 className="text-sm font-semibold tracking-wide uppercase opacity-70">{title}</h3>
+      {/* h2: the tool sits directly under the page's H1, and an h3 there skipped a level. */}
+      <h2 className="text-sm font-semibold tracking-wide uppercase opacity-70">{title}</h2>
       {children}
     </section>
   );
@@ -267,7 +268,7 @@ export function DocumentOutput({ lang, title, sections, missing, filenameBase }:
     <div className="space-y-3">
       {missing.length > 0 && <p className="text-xs opacity-70">{t.missing(missing.join(", "))}</p>}
 
-      <h3 className="text-sm font-semibold tracking-wide uppercase opacity-70">{t.preview}</h3>
+      <h2 className="text-sm font-semibold tracking-wide uppercase opacity-70">{t.preview}</h2>
 
       {/* Die Utilities sitzen auf dem inneren Element: ungelayertes CSS aus
           tds-shared schlaegt jede Tailwind-Utility auf DEMSELBEN Element, und
