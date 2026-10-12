@@ -13,6 +13,7 @@ import {
 } from "./badge";
 import { embedNote } from "./metadata";
 import { safeFilename, useCopyFlag, type Lang } from "./shared";
+import { FileDropZone } from "@tracht-digital-solutions/tds-shared/dropzone";
 
 /**
  * KI-Kennzeichnung für Bilder.
@@ -38,6 +39,8 @@ type Format = "image/png" | "image/jpeg" | "image/webp";
 interface Strings {
   chooseImage: string;
   chooseHint: string;
+  dropHint: string;
+  dropActive: string;
   loadFailed: string;
   noCanvas: string;
   renderFailed: string;
@@ -76,6 +79,8 @@ const STRINGS = {
   de: {
     chooseImage: "Bild auswählen",
     chooseHint: "PNG, JPEG oder WebP. Das Bild verlässt Ihr Gerät nicht.",
+    dropHint: "oder hierher ziehen bzw. mit Strg+V einfügen",
+    dropActive: "Loslassen zum Hinzufügen",
     loadFailed: "Bild konnte nicht geladen werden.",
     noCanvas: "Zeichenfläche nicht verfügbar.",
     renderFailed: "Das Bild konnte nicht erzeugt werden.",
@@ -117,6 +122,8 @@ const STRINGS = {
   en: {
     chooseImage: "Choose an image",
     chooseHint: "PNG, JPEG or WebP. The image never leaves your device.",
+    dropHint: "or drag it here, or paste with Ctrl+V",
+    dropActive: "Release to add",
     loadFailed: "The image could not be loaded.",
     noCanvas: "Canvas is not available.",
     renderFailed: "The image could not be produced.",
@@ -283,16 +290,16 @@ export default function AiImageBadge({ lang = "de" }: Props) {
 
   return (
     <div className="ai-badge-tool space-y-5">
-      <label className="block">
-        <span className="mb-1 block text-sm opacity-80">{t.chooseImage}</span>
-        <input
-          type="file"
-          accept="image/png,image/jpeg,image/webp"
-          className={field}
-          onChange={(event) => onFile(event.target.files?.[0])}
-        />
-        <span className="mt-1 block text-xs opacity-60">{t.chooseHint}</span>
-      </label>
+      <FileDropZone
+        label={t.chooseImage}
+        hint={t.dropHint}
+        activeLabel={t.dropActive}
+        accept="image/png,image/jpeg,image/webp"
+        paste
+        onFiles={(files) => onFile(files[0])}
+      >
+        <span className="block text-xs opacity-60">{t.chooseHint}</span>
+      </FileDropZone>
 
       {image && (
         <>
