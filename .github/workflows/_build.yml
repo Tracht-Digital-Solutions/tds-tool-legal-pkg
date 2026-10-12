@@ -122,7 +122,17 @@ jobs:
         if: ${{ inputs.publish_tag == 'latest' && inputs.rebuild_site != '' }}
         env:
           GH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
-        run: gh workflow run release.yml -R Tracht-Digital-Solutions/${{ inputs.rebuild_site }}
+        # `--ref main` spares gh its default-branch lookup, a GraphQL query that
+        # failed transiently on 2026-10-12 and turned an already published release
+        # red. Three tries cover the rest of GitHub's hiccups; only then is it red.
+        run: |
+          for attempt in 1 2 3; do
+            gh workflow run release.yml -R Tracht-Digital-Solutions/${{ inputs.rebuild_site }} --ref main && exit 0
+            echo "::warning::Site rebuild dispatch attempt $attempt failed; retrying."
+            sleep $((attempt * 15))
+          done
+          echo "::error::The package is published, but the rebuild of ${{ inputs.rebuild_site }} could not be dispatched. Run its release.yml by hand."
+          exit 1
 
       - name: Prune old prerelease package versions (keep newest 5)
         continue-on-error: true
