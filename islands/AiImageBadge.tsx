@@ -14,6 +14,7 @@ import {
 import { embedNote } from "./metadata";
 import { safeFilename, useCopyFlag, type Lang } from "./shared";
 import { FileDropZone } from "@tracht-digital-solutions/tds-shared/dropzone";
+import { Alert } from "@tracht-digital-solutions/tds-shared/alert";
 
 /**
  * KI-Kennzeichnung für Bilder.
@@ -450,9 +451,9 @@ export default function AiImageBadge({ lang = "de" }: Props) {
       )}
 
       {error && (
-        <p className="tds-alert tds-alert--danger tds-appear" role="alert">
+        <Alert>
           {error}
-        </p>
+        </Alert>
       )}
 
       {result && (

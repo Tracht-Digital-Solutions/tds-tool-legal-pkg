@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from "react";
-
 /**
  * Gemeinsame Helfer der vier Werkzeuge dieses Packs.
  *
  * Bewusst eine `.ts`-Datei ohne JSX: die Textaufbau-Funktionen sollen im
  * node-Umfeld getestet werden können, ohne dass vitest dafür jsdom hochfährt.
  */
+
+import { downloadText as downloadAny } from "@tracht-digital-solutions/tds-shared/download";
 
 /**
  * Die Sprachen, die die Tools-Site veröffentlicht.
@@ -16,6 +16,24 @@ import { useEffect, useRef, useState } from "react";
  * müssten. Zwei String-Literale sind diese Kopplung nicht wert.
  */
 export type Lang = "de" | "en";
+
+/**
+ * Downloads and the "Kopiert ✓" flag come from tds-shared (`./download`,
+ * `./clipboard`): the timer is cleared on unmount and only a real copy raises
+ * the flag.
+ */
+export { downloadBlob } from "@tracht-digital-solutions/tds-shared/download";
+export { useCopyFlag } from "@tracht-digital-solutions/tds-shared/clipboard";
+
+/** Klartext als `.txt` herunterladen. */
+export function downloadText(text: string, filename: string): void {
+  downloadAny(text, filename);
+}
+
+/** HTML-Bruchstück als `.html` herunterladen. */
+export function downloadHtml(html: string, filename: string): void {
+  downloadAny(html, filename, "text/html;charset=utf-8");
+}
 
 /**
  * Ein Abschnitt des erzeugten Dokuments.
@@ -74,67 +92,6 @@ export function renderHtml(title: string, sections: Section[]): string {
   }
   lines.push("</section>");
   return lines.join("\n") + "\n";
-}
-
-/**
- * Eine Datei zum Herunterladen anbieten.
- *
- * Die Object-URL wird verzögert freigegeben: ein sofortiges `revoke` nach dem
- * Klick kommt in Firefox dem Download zuvor, und eine nie freigegebene URL
- * hält ihren Blob bis zum Schließen des Tabs am Leben.
- */
-export function downloadBlob(blob: Blob, filename: string): void {
-  const url = URL.createObjectURL(blob);
-  const anchor = document.createElement("a");
-  anchor.href = url;
-  anchor.download = filename;
-  document.body.appendChild(anchor);
-  anchor.click();
-  anchor.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
-
-/** Klartext als `.txt` herunterladen. */
-export function downloadText(text: string, filename: string): void {
-  downloadBlob(new Blob([text], { type: "text/plain;charset=utf-8" }), filename);
-}
-
-/** HTML-Bruchstück als `.html` herunterladen. */
-export function downloadHtml(html: string, filename: string): void {
-  downloadBlob(new Blob([html], { type: "text/html;charset=utf-8" }), filename);
-}
-
-/**
- * Der „Kopiert ✓“-Zustand mit aufgeräumtem Timer.
- *
- * Der Reset wird in einem Ref geführt, damit das Aushängen der Insel ihn
- * löschen kann — eine Astro-Insel wird bei der Navigation abgebaut, und ein
- * laufender Timer setzt sonst den Zustand einer verschwundenen Komponente.
- */
-export function useCopyFlag(delayMs = 1500) {
-  const [copied, setCopied] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(
-    () => () => {
-      if (timer.current !== null) clearTimeout(timer.current);
-    },
-    [],
-  );
-
-  const copy = async (text: string): Promise<void> => {
-    if (!text) return;
-    try {
-      await navigator.clipboard.writeText(text);
-      setCopied(true);
-      if (timer.current !== null) clearTimeout(timer.current);
-      timer.current = setTimeout(() => setCopied(false), delayMs);
-    } catch {
-      setCopied(false);
-    }
-  };
-
-  return { copied, copy, reset: () => setCopied(false) };
 }
 
 /**

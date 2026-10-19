@@ -23,13 +23,13 @@
   "scripts": {
     "build": "tsup",
     "type-check": "tsc --noEmit",
-    "lint:primitives": "node scripts/lint-primitives.mjs",
+    "lint:primitives": "tds-lint-primitives",
     "clean": "rimraf dist",
     "test": "vitest",
     "test:run": "vitest run"
   },
   "peerDependencies": {
-    "@tracht-digital-solutions/tds-shared": ">=0.56.0 <1",
+    "@tracht-digital-solutions/tds-shared": ">=0.59.1 <1",
     "@tracht-digital-solutions/tds-tools-contract": "^1.1.1",
     "astro": ">=6",
     "react": ">=18",
@@ -39,7 +39,7 @@
     "@testing-library/dom": "^10.4.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.6",
-    "@tracht-digital-solutions/tds-shared": "^0.56.0",
+    "@tracht-digital-solutions/tds-shared": "^0.59.3",
     "@tracht-digital-solutions/tds-tools-contract": "^1.1.1",
     "@types/node": "^26.2.0",
     "@types/react": "^19.2.18",
