@@ -17,9 +17,9 @@ Dieses Pack liefert **kein CSS**.
 
 - Ohne `field-boxed` rendert ein Eingabefeld **unsichtbar**, weil Tailwinds Preflight die
   Rahmen nullt.
-- `npm run lint:primitives` läuft in CI. Das Skript ist eine Kopie des Seeds
-  in `tds-ext-template-pkg`; Änderungen gehören dorthin (siehe
-  `tds-ext-template-pkg/docs/agents/lint-primitives.md`).
+- `npm run lint:primitives` läuft in CI. Das Skript ist der Bin
+  `tds-lint-primitives` aus tds-shared (seit 0.59); Änderungen gehören dorthin, nie in eine
+  lokale Kopie (siehe `tds-ext-template-pkg/docs/agents/lint-primitives.md`).
 
 ## Radien, Utilities, Linien
 
