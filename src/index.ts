@@ -27,7 +27,7 @@ export default defineToolPack({
       name: "Impressum-Generator",
       category: "compliance",
       description:
-        "Stellen Sie ein Muster-Impressum nach § 5 DDG zusammen: Rechtsform, Register, USt-IdNr. und Aufsichtsbehörde je nach Ankreuzung.",
+        "Ein Muster-Impressum nach § 5 DDG zusammenstellen: Rechtsform, Register, USt-IdNr. und Aufsichtsbehörde je nach Ankreuzung.",
       icon: "scroll-text",
       keywords: ["impressum", "ddg", "anbieterkennzeichnung", "muster", "generator"],
       component: "@tracht-digital-solutions/tds-tool-legal/tools/ImprintGenerator.astro",
@@ -43,7 +43,7 @@ export default defineToolPack({
       name: "Datenschutzerklärung-Generator",
       category: "compliance",
       description:
-        "Setzen Sie eine Muster-Datenschutzerklärung nach DSGVO aus Bausteinen zusammen: Hosting, Kontaktformular, Cookies, Analyse und Newsletter.",
+        "Eine Muster-Datenschutzerklärung nach DSGVO aus Bausteinen zusammensetzen: Hosting, Kontaktformular, Cookies, Analyse und Newsletter.",
       icon: "shield-check",
       keywords: ["datenschutzerklärung", "dsgvo", "privacy", "muster", "generator"],
       component: "@tracht-digital-solutions/tds-tool-legal/tools/PrivacyPolicyGenerator.astro",
@@ -59,7 +59,7 @@ export default defineToolPack({
       name: "Barrierefreiheitserklärung-Generator",
       category: "compliance",
       description:
-        "Erzeugen Sie eine Muster-Barrierefreiheitserklärung — wahlweise nach dem BFSG für Unternehmen oder nach BITV 2.0 für öffentliche Stellen.",
+        "Eine Muster-Barrierefreiheitserklärung erzeugen — wahlweise nach dem BFSG für Unternehmen oder nach BITV 2.0 für öffentliche Stellen.",
       icon: "accessibility",
       keywords: ["barrierefreiheit", "bfsg", "bitv", "erklärung", "wcag"],
       component:
@@ -76,14 +76,14 @@ export default defineToolPack({
       name: "KI-Kennzeichnung für Bilder",
       category: "compliance",
       description:
-        "Versehen Sie KI-Bilder mit einem sichtbaren Hinweis und einer maschinenlesbaren Notiz — Text, Ecke und Größe frei wählbar, ganz ohne Upload.",
+        "KI-Bilder mit einem sichtbaren Hinweis und einer maschinenlesbaren Notiz versehen — Text, Ecke und Größe frei wählbar, ganz ohne Upload.",
       icon: "sparkles",
       keywords: ["ki", "kennzeichnung", "ai act", "badge", "wasserzeichen"],
       component: "@tracht-digital-solutions/tds-tool-legal/tools/AiImageBadge.astro",
       seo: {
         title: "KI-Bilder kennzeichnen — Badge und Metadaten",
         description:
-          "Bilder als KI-erzeugt kennzeichnen: sichtbares Badge einbrennen und einen Hinweis in PNG oder JPEG einbetten. Läuft vollständig in Ihrem Browser.",
+          "Bilder als KI-erzeugt kennzeichnen: sichtbares Badge einbrennen und einen Hinweis in PNG oder JPEG einbetten. Läuft vollständig im Browser.",
       },
     }),
   ],

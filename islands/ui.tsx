@@ -196,7 +196,7 @@ interface Notes {
 const NOTE = {
   de: {
     disclaimer:
-      "Dieses Werkzeug erzeugt ein Muster zur Orientierung. Es ersetzt keine Rechtsberatung und keine Prüfung Ihres konkreten Falls durch eine Anwältin oder einen Anwalt.",
+      "Dieses Werkzeug erzeugt ein Muster zur Orientierung. Es ersetzt keine Rechtsberatung und keine Prüfung des konkreten Falls durch eine Anwältin oder einen Anwalt.",
     missing: (fields: string) => `Für einen vollständigen Text fehlt noch: ${fields}.`,
     preview: "Vorschau",
     copy: "Kopieren",
@@ -204,7 +204,7 @@ const NOTE = {
     txt: "Als .txt speichern",
     html: "Als .html speichern",
     footer:
-      "Prüfen Sie den Text vor der Veröffentlichung. Die Pflichtangaben hängen an Ihrem Betrieb, nicht an diesem Formular — und dieses Werkzeug kennt Ihren Betrieb nicht.",
+      "Den Text vor der Veröffentlichung prüfen. Die Pflichtangaben hängen am Betrieb, nicht an diesem Formular — und dieses Werkzeug kennt den Betrieb nicht.",
   },
   en: {
     disclaimer:

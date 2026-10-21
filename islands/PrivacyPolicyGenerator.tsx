@@ -113,7 +113,7 @@ const STRINGS = {
     dpoName: "Name",
     dpoContact: "Kontakt",
     supervisoryAuthority: "Zuständige Aufsichtsbehörde",
-    supervisoryHint: "Die Behörde des Bundeslands, in dem Ihr Betrieb sitzt.",
+    supervisoryHint: "Die Behörde des Bundeslands, in dem der Betrieb sitzt.",
     basics: "Betrieb der Website",
     hosting: "Website wird extern gehostet",
     hostingProvider: "Hosting-Anbieter",

@@ -79,7 +79,7 @@ interface Strings {
 const STRINGS = {
   de: {
     chooseImage: "Bild auswählen",
-    chooseHint: "PNG, JPEG oder WebP. Das Bild verlässt Ihr Gerät nicht.",
+    chooseHint: "PNG, JPEG oder WebP. Das Bild verlässt das Gerät nicht.",
     dropHint: "oder hierher ziehen bzw. mit Strg+V einfügen",
     dropActive: "Loslassen zum Hinzufügen",
     loadFailed: "Bild konnte nicht geladen werden.",
@@ -103,7 +103,7 @@ const STRINGS = {
     quality: "Qualität",
     embed: "Maschinenlesbaren Hinweis einbetten",
     embedHint: "Wird als Textabschnitt (PNG) oder Kommentarsegment (JPEG) in die Datei geschrieben.",
-    embedWebp: "WebP kann den maschinenlesbaren Hinweis nicht tragen — wählen Sie PNG oder JPEG.",
+    embedWebp: "WebP kann den maschinenlesbaren Hinweis nicht tragen — dafür PNG oder JPEG wählen.",
     build: "Bild erzeugen",
     building: "Erzeuge …",
     download: "Herunterladen",
@@ -118,7 +118,7 @@ const STRINGS = {
     copied: "Kopiert ✓",
     exifNote:
       "Beim Erzeugen wird das Bild neu gezeichnet. Vorhandene Aufnahmedaten des Originals (EXIF) gehen dabei verloren.",
-    privacyNote: "Das Bild wird ausschließlich in Ihrem Browser verarbeitet und niemals hochgeladen.",
+    privacyNote: "Das Bild wird ausschließlich im Browser verarbeitet und niemals hochgeladen.",
   },
   en: {
     chooseImage: "Choose an image",
