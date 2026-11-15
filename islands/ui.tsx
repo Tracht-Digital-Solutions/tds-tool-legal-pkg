@@ -204,7 +204,7 @@ const NOTE = {
     txt: "Als .txt speichern",
     html: "Als .html speichern",
     footer:
-      "Den Text vor der Veröffentlichung prüfen. Die Pflichtangaben hängen am Betrieb, nicht an diesem Formular, und dieses Werkzeug kennt den Betrieb nicht.",
+      "Den Text vor der Veröffentlichung prüfen. Die Pflichtangaben hängen am Betrieb, nicht an diesem Formular und dieses Werkzeug kennt den Betrieb nicht.",
   },
   en: {
     disclaimer:
