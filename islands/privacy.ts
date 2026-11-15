@@ -278,8 +278,8 @@ export function buildPrivacySections(values: PrivacyValues, lang: Lang): Section
       const tool = clean(values.consentTool);
       paragraphs.push(
         de
-          ? `Darüber hinaus setzen wir Cookies und vergleichbare Techniken ein, die nicht technisch notwendig sind. Sie werden erst gesetzt, nachdem Sie eingewilligt haben${tool ? ` — die Einwilligung holen wir über ${tool} ein` : ""}. Rechtsgrundlage ist § 25 Abs. 1 TDDDG in Verbindung mit Art. 6 Abs. 1 lit. a DSGVO. Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen.`
-          : `We also use cookies and comparable technologies that are not technically necessary. They are only set once you have given consent${tool ? ` — we obtain that consent through ${tool}` : ""}. The legal basis is section 25 (1) TDDDG in conjunction with Article 6 (1) (a) GDPR. You can withdraw your consent at any time with effect for the future.`,
+          ? `Darüber hinaus setzen wir Cookies und vergleichbare Techniken ein, die nicht technisch notwendig sind. Sie werden erst gesetzt, nachdem Sie eingewilligt haben${tool ? `, die Einwilligung holen wir über ${tool} ein` : ""}. Rechtsgrundlage ist § 25 Abs. 1 TDDDG in Verbindung mit Art. 6 Abs. 1 lit. a DSGVO. Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen.`
+          : `We also use cookies and comparable technologies that are not technically necessary. They are only set once you have given consent${tool ? `, we obtain that consent through ${tool}` : ""}. The legal basis is section 25 (1) TDDDG in conjunction with Article 6 (1) (a) GDPR. You can withdraw your consent at any time with effect for the future.`,
       );
     }
     sections.push({ heading: de ? "Cookies" : "Cookies", paragraphs });
@@ -386,7 +386,7 @@ export function buildPrivacySections(values: PrivacyValues, lang: Lang): Section
       heading: de ? "Bestellungen und Zahlungsabwicklung" : "Orders and payment processing",
       paragraphs: [
         de
-          ? "Wenn Sie bei uns bestellen, verarbeiten wir die dafür erforderlichen Daten — Bestand, Anschrift, Kontaktdaten und die Angaben zur gewählten Zahlungsart. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO."
+          ? "Wenn Sie bei uns bestellen, verarbeiten wir die dafür erforderlichen Daten: Bestand, Anschrift, Kontaktdaten und die Angaben zur gewählten Zahlungsart. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO."
           : "When you place an order with us, we process the data required to do so: the items ordered, your address, your contact details and the information relating to the chosen payment method. The legal basis is Article 6 (1) (b) GDPR.",
         de
           ? `Die Zahlungsabwicklung erfolgt über Zahlungsdienstleister${payments ? ` (${payments})` : ""}, die die für die Zahlung erforderlichen Daten in eigener Verantwortung verarbeiten. Handels- und steuerrechtliche Aufbewahrungsfristen bleiben unberührt.`
@@ -464,8 +464,8 @@ export function buildPrivacySections(values: PrivacyValues, lang: Lang): Section
     paragraphs: [
       clean(values.retention) ||
         (de
-          ? "Nach dem Grundsatz der Speicherbegrenzung (Art. 5 Abs. 1 lit. e DSGVO) speichern wir personenbezogene Daten nur so lange, wie es für den jeweiligen Zweck erforderlich ist. Danach löschen wir sie, es sei denn, gesetzliche Aufbewahrungsfristen — insbesondere aus dem Handels- und Steuerrecht — verpflichten uns zu einer längeren Speicherung."
-          : "Under the storage limitation principle (Article 5 (1) (e) GDPR) we store personal data only for as long as is necessary for the respective purpose. After that we delete it, unless statutory retention periods — in particular under commercial and tax law — oblige us to store it for longer."),
+          ? "Nach dem Grundsatz der Speicherbegrenzung (Art. 5 Abs. 1 lit. e DSGVO) speichern wir personenbezogene Daten nur so lange, wie es für den jeweiligen Zweck erforderlich ist. Danach löschen wir sie, es sei denn, gesetzliche Aufbewahrungsfristen, insbesondere aus dem Handels- und Steuerrecht, verpflichten uns zu einer längeren Speicherung."
+          : "Under the storage limitation principle (Article 5 (1) (e) GDPR) we store personal data only for as long as is necessary for the respective purpose. After that we delete it, unless statutory retention periods, in particular under commercial and tax law, oblige us to store it for longer."),
     ],
   });
 

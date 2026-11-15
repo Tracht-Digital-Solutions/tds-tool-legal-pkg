@@ -32,7 +32,7 @@ export default defineToolPack({
       keywords: ["impressum", "ddg", "anbieterkennzeichnung", "muster", "generator"],
       component: "@tracht-digital-solutions/tds-tool-legal/tools/ImprintGenerator.astro",
       seo: {
-        title: "Impressum-Generator — Muster nach § 5 DDG",
+        title: "Impressum-Generator: Muster nach § 5 DDG",
         description:
           "Impressum-Generator für kleine Betriebe: Muster nach § 5 DDG und § 18 MStV, per Ankreuzung zusammengestellt. Ohne Anmeldung, direkt im Browser.",
       },
@@ -48,7 +48,7 @@ export default defineToolPack({
       keywords: ["datenschutzerklärung", "dsgvo", "privacy", "muster", "generator"],
       component: "@tracht-digital-solutions/tds-tool-legal/tools/PrivacyPolicyGenerator.astro",
       seo: {
-        title: "Datenschutzerklärung erstellen — DSGVO-Muster",
+        title: "Datenschutzerklärung erstellen: DSGVO-Muster",
         description:
           "Datenschutzerklärung nach DSGVO als Muster erzeugen: Abschnitte für Hosting, Cookies, Webanalyse und Newsletter zuschalten. Alles lokal im Browser.",
       },
@@ -59,13 +59,13 @@ export default defineToolPack({
       name: "Barrierefreiheitserklärung-Generator",
       category: "compliance",
       description:
-        "Eine Muster-Barrierefreiheitserklärung erzeugen — wahlweise nach dem BFSG für Unternehmen oder nach BITV 2.0 für öffentliche Stellen.",
+        "Eine Muster-Barrierefreiheitserklärung erzeugen, wahlweise nach dem BFSG für Unternehmen oder nach BITV 2.0 für öffentliche Stellen.",
       icon: "accessibility",
       keywords: ["barrierefreiheit", "bfsg", "bitv", "erklärung", "wcag"],
       component:
         "@tracht-digital-solutions/tds-tool-legal/tools/AccessibilityStatementGenerator.astro",
       seo: {
-        title: "Barrierefreiheitserklärung erstellen — BFSG",
+        title: "Barrierefreiheitserklärung erstellen: BFSG",
         description:
           "Barrierefreiheitserklärung für BFSG oder BITV 2.0: Stand der Vereinbarkeit, Rückmeldeweg und Durchsetzungsverfahren als Muster, lokal im Browser.",
       },
@@ -76,12 +76,12 @@ export default defineToolPack({
       name: "KI-Kennzeichnung für Bilder",
       category: "compliance",
       description:
-        "KI-Bilder mit einem sichtbaren Hinweis und einer maschinenlesbaren Notiz versehen — Text, Ecke und Größe frei wählbar, ganz ohne Upload.",
+        "KI-Bilder mit einem sichtbaren Hinweis und einer maschinenlesbaren Notiz versehen: Text, Ecke und Größe frei wählbar, ganz ohne Upload.",
       icon: "sparkles",
       keywords: ["ki", "kennzeichnung", "ai act", "badge", "wasserzeichen"],
       component: "@tracht-digital-solutions/tds-tool-legal/tools/AiImageBadge.astro",
       seo: {
-        title: "KI-Bilder kennzeichnen — Badge und Metadaten",
+        title: "KI-Bilder kennzeichnen: Badge und Metadaten",
         description:
           "Bilder als KI-erzeugt kennzeichnen: sichtbares Badge einbrennen und einen Hinweis in PNG oder JPEG einbetten. Läuft vollständig im Browser.",
       },

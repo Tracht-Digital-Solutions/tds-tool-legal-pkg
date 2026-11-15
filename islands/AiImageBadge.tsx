@@ -33,7 +33,7 @@ import { Alert } from "@tracht-digital-solutions/tds-shared/alert";
 /** Die Kanten des Vorschaubilds. Größere Bilder werden nur für die ANZEIGE verkleinert. */
 const PREVIEW_MAX = 1200;
 
-const SOFTWARE = "TD Tools — KI-Kennzeichnung (tools.tracht-digital.de)";
+const SOFTWARE = "TD Tools: KI-Kennzeichnung (tools.tracht-digital.de)";
 
 type Format = "image/png" | "image/jpeg" | "image/webp";
 
@@ -103,7 +103,7 @@ const STRINGS = {
     quality: "Qualität",
     embed: "Maschinenlesbaren Hinweis einbetten",
     embedHint: "Wird als Textabschnitt (PNG) oder Kommentarsegment (JPEG) in die Datei geschrieben.",
-    embedWebp: "WebP kann den maschinenlesbaren Hinweis nicht tragen — dafür PNG oder JPEG wählen.",
+    embedWebp: "WebP kann den maschinenlesbaren Hinweis nicht tragen, dafür PNG oder JPEG wählen.",
     build: "Bild erzeugen",
     building: "Erzeuge …",
     download: "Herunterladen",
@@ -112,7 +112,7 @@ const STRINGS = {
     result: "Ergebnis",
     resultAlt: "Gekennzeichnetes Bild",
     embedded: "Hinweis in der Datei eingebettet.",
-    notEmbedded: "Nur sichtbare Kennzeichnung — die Datei trägt keinen maschinenlesbaren Hinweis.",
+    notEmbedded: "Nur sichtbare Kennzeichnung, die Datei trägt keinen maschinenlesbaren Hinweis.",
     caption: "Bildunterschrift zum Mitkopieren",
     copyCaption: "Text kopieren",
     copied: "Kopiert ✓",
@@ -146,7 +146,7 @@ const STRINGS = {
     quality: "Quality",
     embed: "Embed a machine-readable note",
     embedHint: "Written into the file as a text chunk (PNG) or a comment segment (JPEG).",
-    embedWebp: "WebP cannot carry the machine-readable note — choose PNG or JPEG.",
+    embedWebp: "WebP cannot carry the machine-readable note, choose PNG or JPEG.",
     build: "Produce the image",
     building: "Producing …",
     download: "Download",
@@ -155,7 +155,7 @@ const STRINGS = {
     result: "Result",
     resultAlt: "Labelled image",
     embedded: "Note embedded in the file.",
-    notEmbedded: "Visible label only — the file carries no machine-readable note.",
+    notEmbedded: "Visible label only, the file carries no machine-readable note.",
     caption: "Caption to copy",
     copyCaption: "Copy the text",
     copied: "Copied ✓",
@@ -480,7 +480,7 @@ export default function AiImageBadge({ lang = "de" }: Props) {
         <div className="tds-card p-3">
           <output className="block text-sm">{caption}</output>
         </div>
-        <button type="button" className="btn btn-ghost" onClick={() => void copy(caption)}>
+        <button type="button" className="btn btn-ghost" onClick={() => void copy(caption)} data-copied={copied ? "" : undefined}>
           {copied ? t.copied : t.copyCaption}
         </button>
       </div>

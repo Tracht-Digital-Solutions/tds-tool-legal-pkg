@@ -204,7 +204,7 @@ const NOTE = {
     txt: "Als .txt speichern",
     html: "Als .html speichern",
     footer:
-      "Den Text vor der Veröffentlichung prüfen. Die Pflichtangaben hängen am Betrieb, nicht an diesem Formular — und dieses Werkzeug kennt den Betrieb nicht.",
+      "Den Text vor der Veröffentlichung prüfen. Die Pflichtangaben hängen am Betrieb, nicht an diesem Formular, und dieses Werkzeug kennt den Betrieb nicht.",
   },
   en: {
     disclaimer:
@@ -216,7 +216,7 @@ const NOTE = {
     txt: "Save as .txt",
     html: "Save as .html",
     footer:
-      "Review the text before you publish it. Which details are mandatory depends on your business, not on this form — and this tool does not know your business.",
+      "Review the text before you publish it. Which details are mandatory depends on your business, not on this form, and this tool does not know your business.",
   },
 } satisfies Record<Lang, Notes>;
 
@@ -280,7 +280,7 @@ export function DocumentOutput({ lang, title, sections, missing, filenameBase }:
       </div>
 
       <div className="flex flex-wrap gap-2">
-        <button type="button" className="btn btn-primary" onClick={() => void copy(text)}>
+        <button type="button" className="btn btn-primary" onClick={() => void copy(text)} data-copied={copied ? "" : undefined}>
           {copied ? t.copied : t.copy}
         </button>
         <button

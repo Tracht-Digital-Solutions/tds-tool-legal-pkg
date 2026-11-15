@@ -29,6 +29,7 @@ npm run build                   # tsup
 - Übersetzt werden Sätze, nie die Klauselauswahl.
 - Kein CSS ausliefern. `component` ist ein Paket-Subpfad. `id` und `slug` bleiben global eindeutig.
 - Bleibt in der `0.1.x`-Linie. Die Site pinnt `^0.1.3`, ein 0.x-Caret ist minor-gesperrt.
+- Follows the TDS quality standard (`../tds-ops/standards/quality.md`): no AI slop, clean code.
 
 ## Themen-Dateien
 

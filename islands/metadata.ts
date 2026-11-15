@@ -221,7 +221,7 @@ export async function embedNote(
   }
 
   if (isJpeg(bytes)) {
-    const out = embedJpegComment(bytes, `${note} — ${software}`);
+    const out = embedJpegComment(bytes, `${note}: ${software}`);
     return { blob: new Blob([out], { type: "image/jpeg" }), embedded: out.length > bytes.length };
   }
 
