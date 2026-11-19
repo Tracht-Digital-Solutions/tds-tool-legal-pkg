@@ -3,7 +3,7 @@
 Tool-Pack für die öffentliche Tools-Plattform: vier Werkzeuge für Pflichten, die ein
 Betrieb auf der eigenen Website erfüllen muss (Impressum, Datenschutzerklärung,
 Barrierefreiheitserklärung, KI-Kennzeichnung). Gebaut gegen
-`@tracht-digital-solutions/tds-tools-contract`, zur Build-Zeit in `tds-tools-frontend`
+`@tracht-digital-labs/tds-tools-contract`, zur Build-Zeit in `tds-tools-frontend`
 komponiert. Alles läuft im Browser, ohne Netzwerkaufruf und ohne Laufzeit-Dependency.
 
 Plattform-Modell: `tds-tools-contract-pkg/AGENTS.md`. Schritt-für-Schritt-Anleitung:

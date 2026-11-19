@@ -1,4 +1,4 @@
-# @tracht-digital-solutions/tds-tool-legal
+# @tracht-digital-labs/tds-tool-legal
 
 Werkzeuge für Rechts- und Kennzeichnungspflichten auf der **TDS-Tools-Plattform**
 (`tds-tools-frontend`). Vollständig clientseitig — nichts verlässt den Browser,

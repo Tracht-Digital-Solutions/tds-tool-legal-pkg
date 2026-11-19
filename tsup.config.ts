@@ -9,5 +9,5 @@ export default defineConfig({
   clean: true,
   // Only the manifest is compiled here; the .astro shells + .tsx islands ship as
   // raw source and are compiled by the consuming site's Astro/Vite (see exports).
-  external: ["@tracht-digital-solutions/tds-tools-contract"],
+  external: ["@tracht-digital-labs/tds-tools-contract"],
 });

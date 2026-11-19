@@ -44,7 +44,7 @@ jobs:
         with:
           node-version: '22'
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@tracht-digital-solutions'
+          scope: '@tracht-digital-labs'
 
       - name: Pin npm
         # Node 22 ships npm 10, whose arborist crashes with
@@ -127,7 +127,7 @@ jobs:
         # red. Three tries cover the rest of GitHub's hiccups; only then is it red.
         run: |
           for attempt in 1 2 3; do
-            gh workflow run release.yml -R Tracht-Digital-Solutions/${{ inputs.rebuild_site }} --ref main && exit 0
+            gh workflow run release.yml -R Tracht-Digital-Labs/${{ inputs.rebuild_site }} --ref main && exit 0
             echo "::warning::Site rebuild dispatch attempt $attempt failed; retrying."
             sleep $((attempt * 15))
           done

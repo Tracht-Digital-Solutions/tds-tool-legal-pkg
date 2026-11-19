@@ -13,8 +13,8 @@ import {
 } from "./badge";
 import { embedNote } from "./metadata";
 import { safeFilename, useCopyFlag, type Lang } from "./shared";
-import { FileDropZone } from "@tracht-digital-solutions/tds-shared/dropzone";
-import { Alert } from "@tracht-digital-solutions/tds-shared/alert";
+import { FileDropZone } from "@tracht-digital-labs/tds-shared/dropzone";
+import { Alert } from "@tracht-digital-labs/tds-shared/alert";
 
 /**
  * KI-Kennzeichnung für Bilder.

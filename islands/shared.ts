@@ -5,7 +5,7 @@
  * node-Umfeld getestet werden können, ohne dass vitest dafür jsdom hochfährt.
  */
 
-import { downloadText as downloadAny } from "@tracht-digital-solutions/tds-shared/download";
+import { downloadText as downloadAny } from "@tracht-digital-labs/tds-shared/download";
 
 /**
  * Die Sprachen, die die Tools-Site veröffentlicht.
@@ -22,8 +22,8 @@ export type Lang = "de" | "en";
  * `./clipboard`): the timer is cleared on unmount and only a real copy raises
  * the flag.
  */
-export { downloadBlob } from "@tracht-digital-solutions/tds-shared/download";
-export { useCopyFlag } from "@tracht-digital-solutions/tds-shared/clipboard";
+export { downloadBlob } from "@tracht-digital-labs/tds-shared/download";
+export { useCopyFlag } from "@tracht-digital-labs/tds-shared/clipboard";
 
 /** Klartext als `.txt` herunterladen. */
 export function downloadText(text: string, filename: string): void {

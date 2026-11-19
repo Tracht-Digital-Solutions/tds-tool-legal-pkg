@@ -1,4 +1,4 @@
-import { defineToolPack, defineTool } from "@tracht-digital-solutions/tds-tools-contract";
+import { defineToolPack, defineTool } from "@tracht-digital-labs/tds-tools-contract";
 
 /**
  * Recht & Pflichten — die vier Werkzeuge für Pflichten, die ein Betrieb auf der
@@ -30,7 +30,7 @@ export default defineToolPack({
         "Ein Muster-Impressum nach § 5 DDG zusammenstellen: Rechtsform, Register, USt-IdNr. und Aufsichtsbehörde je nach Ankreuzung.",
       icon: "scroll-text",
       keywords: ["impressum", "ddg", "anbieterkennzeichnung", "muster", "generator"],
-      component: "@tracht-digital-solutions/tds-tool-legal/tools/ImprintGenerator.astro",
+      component: "@tracht-digital-labs/tds-tool-legal/tools/ImprintGenerator.astro",
       seo: {
         title: "Impressum-Generator: Muster nach § 5 DDG",
         description:
@@ -46,7 +46,7 @@ export default defineToolPack({
         "Eine Muster-Datenschutzerklärung nach DSGVO aus Bausteinen zusammensetzen: Hosting, Kontaktformular, Cookies, Analyse und Newsletter.",
       icon: "shield-check",
       keywords: ["datenschutzerklärung", "dsgvo", "privacy", "muster", "generator"],
-      component: "@tracht-digital-solutions/tds-tool-legal/tools/PrivacyPolicyGenerator.astro",
+      component: "@tracht-digital-labs/tds-tool-legal/tools/PrivacyPolicyGenerator.astro",
       seo: {
         title: "Datenschutzerklärung erstellen: DSGVO-Muster",
         description:
@@ -63,7 +63,7 @@ export default defineToolPack({
       icon: "accessibility",
       keywords: ["barrierefreiheit", "bfsg", "bitv", "erklärung", "wcag"],
       component:
-        "@tracht-digital-solutions/tds-tool-legal/tools/AccessibilityStatementGenerator.astro",
+        "@tracht-digital-labs/tds-tool-legal/tools/AccessibilityStatementGenerator.astro",
       seo: {
         title: "Barrierefreiheitserklärung erstellen: BFSG",
         description:
@@ -79,7 +79,7 @@ export default defineToolPack({
         "KI-Bilder mit einem sichtbaren Hinweis und einer maschinenlesbaren Notiz versehen: Text, Ecke und Größe frei wählbar, ganz ohne Upload.",
       icon: "sparkles",
       keywords: ["ki", "kennzeichnung", "ai act", "badge", "wasserzeichen"],
-      component: "@tracht-digital-solutions/tds-tool-legal/tools/AiImageBadge.astro",
+      component: "@tracht-digital-labs/tds-tool-legal/tools/AiImageBadge.astro",
       seo: {
         title: "KI-Bilder kennzeichnen: Badge und Metadaten",
         description:
